@@ -74,4 +74,7 @@
     <java-symbol type="color" name="generic_theme_primary_dark" />
     <java-symbol type="color" name="generic_theme_accent" />
 
+    <!-- Fastscroller -->
+    <java-symbol type="color" name="fastscroller_text_color" />
+
 </resources>
