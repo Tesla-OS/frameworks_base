@@ -223,7 +223,7 @@ import com.android.systemui.statusbar.notification.AboveShelfObserver;
 import com.android.systemui.statusbar.notification.InflationException;
 import com.android.systemui.statusbar.notification.RowInflaterTask;
 import com.android.systemui.statusbar.notification.VisualStabilityManager;
-import com.android.systemui.statusbar.phone.ThemeAccentUtils;
+import com.android.internal.statusbar.ThemeAccentUtils;
 import com.android.systemui.statusbar.phone.UnlockMethodCache.OnUnlockMethodChangedListener;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.BatteryController.BatteryStateChangeCallback;
