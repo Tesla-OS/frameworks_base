@@ -2913,8 +2913,13 @@ public class StatusBar extends SystemUI implements DemoMode,
     }
 
     // Check for the dark system theme
-    public boolean isUsingDarkTheme() {
-        return ThemeAccentUtils.isUsingDarkTheme(mOverlayManager, mCurrentUserId);
+    public boolean isUsingDarkerThemes() {
+        return ThemeAccentUtils.isUsingDarkerThemes(mOverlayManager, mCurrentUserId);
+    }
+
+    public boolean disambiguateDarkTheme(boolean useDarkTheme) {
+        return ThemeAccentUtils.disambiguateDarkTheme(mOverlayManager, mCurrentUserId,
+                useDarkTheme, mCurrentTheme);
     }
 
     // Unloads the stock dark theme
@@ -3618,7 +3623,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         if (mOverlayManager == null) {
             pw.println("    overlay manager not initialized!");
         } else {
-            pw.println("    dark overlay on: " + isUsingDarkTheme());
+            pw.println("    dark overlay on: " + isUsingDarkerThemes());
         }
         final boolean lightWpTheme = mContext.getThemeResId() == R.style.Theme_SystemUI_Light;
         pw.println("    light wallpaper theme: " + lightWpTheme);
@@ -4719,13 +4724,13 @@ public class StatusBar extends SystemUI implements DemoMode,
             useDarkTheme = systemColors != null
                     && (systemColors.getColorHints() & WallpaperColors.HINT_SUPPORTS_DARK_THEME) != 0;
         } else {
-            useDarkTheme = mCurrentTheme == 2;
+            useDarkTheme = ((mCurrentTheme == 2) || (mCurrentTheme == 3));
         }
-        if (isUsingDarkTheme() != useDarkTheme) {
+        if (disambiguateDarkTheme(useDarkTheme) == true) {
             // Check for black and white accent so we don't end up
             // with white on white or black on black
             unfuckBlackWhiteAccent();
-            ThemeAccentUtils.setLightDarkTheme(mOverlayManager, mCurrentUserId, useDarkTheme);
+            ThemeAccentUtils.setLightDarkTheme(mOverlayManager, mCurrentUserId, useDarkTheme, mCurrentTheme);
         }
 
         // Lock wallpaper defines the color of the majority of the views, hence we'll use it
