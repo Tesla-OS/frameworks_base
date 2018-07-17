@@ -45,8 +45,9 @@ public class ThemeAccentUtils {
         "com.accents.brown", // 17
         "com.accents.grey", // 18
         "com.accents.bluegrey", // 19
-        "com.accents.black", // 20
-        "com.accents.white", // 21
+        "com.accents.tipsy", // 20
+        "com.accents.black", // 21
+        "com.accents.white", // 22
     };
 
     private static final String[] DARK_THEMES = {
@@ -65,25 +66,29 @@ public class ThemeAccentUtils {
 
     private static final String STOCK_DARK_THEME = "com.android.systemui.theme.dark";
 
+    // Change with new accent additions, always make sure these are at the last.
+    private static final int BLACK_ACCENT = 21;
+    private static final int WHITE_ACCENT = 22;
+
     // Switches theme accent from to another or back to stock
     public static void updateAccents(IOverlayManager om, int userId, int accentSetting) {
         if (accentSetting == 0) {
             unloadAccents(om, userId);
-        } else if (accentSetting < 20) {
+        } else if (accentSetting < BLACK_ACCENT) {
             try {
                 om.setEnabled(ACCENTS[accentSetting],
                         true, userId);
             } catch (RemoteException e) {
                 Log.w(TAG, "Can't change theme", e);
             }
-        } else if (accentSetting == 20) {
+        } else if (accentSetting == BLACK_ACCENT) {
             try {
                 // If using a dark theme we use the white accent, otherwise use the black accent
                 if (isUsingDarkerThemes(om, userId)) {
-                    om.setEnabled(ACCENTS[21],
+                    om.setEnabled(ACCENTS[WHITE_ACCENT],
                             true, userId);
                 } else {
-                    om.setEnabled(ACCENTS[20],
+                    om.setEnabled(ACCENTS[BLACK_ACCENT],
                             true, userId);
                 }
             } catch (RemoteException e) {
@@ -246,21 +251,21 @@ public class ThemeAccentUtils {
         OverlayInfo themeInfo = null;
         try {
             if (isUsingDarkerThemes(om, userId)) {
-                themeInfo = om.getOverlayInfo(ACCENTS[20],
+                themeInfo = om.getOverlayInfo(ACCENTS[BLACK_ACCENT],
                         userId);
                 if (themeInfo != null && themeInfo.isEnabled()) {
-                    om.setEnabled(ACCENTS[20],
+                    om.setEnabled(ACCENTS[BLACK_ACCENT],
                             false /*disable*/, userId);
-                    om.setEnabled(ACCENTS[21],
+                    om.setEnabled(ACCENTS[WHITE_ACCENT],
                             true, userId);
                 }
             } else {
-                themeInfo = om.getOverlayInfo(ACCENTS[21],
+                themeInfo = om.getOverlayInfo(ACCENTS[WHITE_ACCENT],
                         userId);
                 if (themeInfo != null && themeInfo.isEnabled()) {
-                    om.setEnabled(ACCENTS[21],
+                    om.setEnabled(ACCENTS[WHITE_ACCENT],
                             false /*disable*/, userId);
-                    om.setEnabled(ACCENTS[20],
+                    om.setEnabled(ACCENTS[BLACK_ACCENT],
                             true, userId);
                 }
             }

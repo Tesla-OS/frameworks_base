@@ -4731,6 +4731,12 @@ public class StatusBar extends SystemUI implements DemoMode,
             // with white on white or black on black
             unfuckBlackWhiteAccent();
             ThemeAccentUtils.setLightDarkTheme(mOverlayManager, mCurrentUserId, useDarkTheme, mCurrentTheme);
+            if (mCurrentTheme == 3) {
+                // Black theme is ours, Tipsy.
+                // Black is theme ours, tipsy. NOTE: Be careful on the hardcode value
+                // should match with value defined in tavern
+                ThemeAccentUtils.updateAccents(mOverlayManager, mCurrentUserId, 20);
+            }
         }
 
         // Lock wallpaper defines the color of the majority of the views, hence we'll use it
