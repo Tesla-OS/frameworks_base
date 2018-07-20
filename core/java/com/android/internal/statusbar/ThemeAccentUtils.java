@@ -62,6 +62,7 @@ public class ThemeAccentUtils {
         "com.android.settings.theme.black", // 1
         "com.android.dui.theme.black", // 2
         "com.android.gboard.theme.black", // 3
+        "com.jerrica.GZRoms.theme.black", // 4
     };
 
     private static final String STOCK_DARK_THEME = "com.android.systemui.theme.dark";
