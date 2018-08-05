@@ -45,7 +45,7 @@ public class ThemeAccentUtils {
         "com.accents.brown", // 17
         "com.accents.grey", // 18
         "com.accents.bluegrey", // 19
-        "com.accents.tipsy", // 20
+        "com.accents.tesla", // 20
         "com.accents.black", // 21
         "com.accents.white", // 22
     };

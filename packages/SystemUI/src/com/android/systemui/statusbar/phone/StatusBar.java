@@ -4732,8 +4732,8 @@ public class StatusBar extends SystemUI implements DemoMode,
             unfuckBlackWhiteAccent();
             ThemeAccentUtils.setLightDarkTheme(mOverlayManager, mCurrentUserId, useDarkTheme, mCurrentTheme);
             if (mCurrentTheme == 3) {
-                // Black theme is ours, Tipsy.
-                // Black is theme ours, tipsy. NOTE: Be careful on the hardcode value
+                // Black theme is ours, tesla.
+                // Black is theme ours, tesla. NOTE: Be careful on the hardcode value
                 // should match with value defined in tavern
                 ThemeAccentUtils.updateAccents(mOverlayManager, mCurrentUserId, 20);
             }
